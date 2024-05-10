@@ -13,6 +13,8 @@
 
 * the ability to use a swiping motion to say where i want the board to move 
     * ie. swipe right, all pieces swipe right
+    * maybe this would be easier with a button click on keyboard in various directions, as opposed to a swiping method
+    * would also stop accidental restart click
 * matching pieces combine to create the next level up
 * The score tells you what your highest flower is 
 * To Win says which flower you need to win 
