@@ -1,12 +1,5 @@
 
-
-/*-------------------------------- Constants --------------------------------*/
-
-const cell = document.querySelector(".cell")
-const score = document.querySelector(".char")
-
-
-/*-------------------------------- Functions --------------------------------*/
+/*-------------------------------- whiteboarding --------------------------------*/
 // functions i need to make
     // initiating the game
     // function to randomly assign value to a cell
@@ -55,20 +48,47 @@ const score = document.querySelector(".char")
     // shifting right is +1?
     // shifting left -1 
     // shifting down +1
-    // shifting up 1
+    // shifting up -1
+
+/*-------------------------------- Constants --------------------------------*/
+
+// const cell = document.querySelector(".cell")
+// const score = document.querySelector(".char")
+
+/*-------------------------------- variables --------------------------------*/
+
+
+/*-------------------------------- Functions --------------------------------*/
+
+const init = () => {
+    randomNumber()
+}
+
+//if random number = 1 then it's a 4, otherwise it's a 2
+const randomNumber = () => {
+    if (Math.floor(Math.random() * 10)+1 == 1){
+        return 4
+    } else {
+        return 2
+    }
+}
+console.log(randomNumber())
+
+let moveCell = (event) => {
+    if (event.key == "ArrowLeft") {
+        console.log(`left`)
+    } else if (event.key == "ArrowRight"){
+        console.log(`right`)
+    } else if (event.key == "ArrowDown"){
+        console.log(`down`)
+    } else if (event.key == "ArrowUp"){
+        console.log(`up`)
+    }
+}
 
 /*-------------------------------- Event Listeners --------------------------------*/
-
-
-// function init(){
-
-// }
-
-// function getRandom(){
-//     // where they appear is random
+document.addEventListener(`keydown`, moveCell)
 
 
 
-
-// asked chatgpt to make me a 4x4 matrix
 

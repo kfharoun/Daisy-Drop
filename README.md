@@ -42,6 +42,18 @@
 * start in JS to get piece to show up in random square 
 * slide function 
 
+## Algorithm
+
+- [] A game of 2048 is played on a 4×4 board.
+- [] Each position on the board may be empty or may contain a tile, and each tile will have a number on it
+- [x] When we start, the board will have two tiles in random locations, each of which either has a “2” or a “4” on it – each has an independent 10% chance of being a “4”, or otherwise a is a “2”
+- [] Moves are performed by shifting all tiles towards one edge – up, down, left, or right.
+- [] Any tiles with the same value that are adjacent to each other and are moving together will merge and end up with a new tile equal to the sum of the earlier two.
+- [] After we’ve made a move, a new tile will be placed onto the board. 
+- [] The game then continues until there are no more moves possible.
+- [] Player has won once they have reached 2048
+
+
 ## Visual Elements Needed
 
 - [] 2
@@ -70,47 +82,10 @@
 
 ### Sources
 
-* asked chat gpt to give me a 4x4 matrix so i could see how it was formatted, and what it logged in the console. this is what it returned
+* [to find out the algorithm behind the game](https://www.baeldung.com/cs/2048-algorithm)
 
-```javascript
-class Matrix4x4 {
-    constructor() {
-        this.data = new Array(4);
-        for (let i = 0; i < 4; i++) {
-            this.data[i] = new Array(4).fill(0);
-        }
-    }
+*[keyup keydown](https://stackoverflow.com/questions/43809436/how-can-i-move-the-ball-left-right-up-down-using-the-keybord)
 
-    set(row, col, value) {
-        if (row >= 0 && row < 4 && col >= 0 && col < 4) {
-            this.data[row][col] = value;
-        } else {
-            console.error("Index out of range");
-        }
-    }
+*[math random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random)
 
-    get(row, col) {
-        if (row >= 0 && row < 4 && col >= 0 && col < 4) {
-            return this.data[row][col];
-        } else {
-            console.error("Index out of range");
-            return null;
-        }
-    }
-
-    print() {
-        for (let i = 0; i < 4; i++) {
-            console.log(this.data[i].join('\t'));
-        }
-    }
-}
-
-// Example usage:
-const matrix = new Matrix4x4();
-matrix.set(0, 0, 1);
-matrix.set(1, 1, 1);
-matrix.set(2, 2, 1);
-matrix.set(3, 3, 1);
-matrix.print();
-```
-
+*[key code table](https://www.toptal.com/developers/keycode/table)
