@@ -21,7 +21,7 @@
 * Should I change the to win to best score? 
     * can score be logged 
 * Can the starting piece start somewhere random?
-* Am I psycho crazy for wanting to draw the flower characters 
+* Am I too overzealous for wanting to draw the flower characters 
 
 ### How to get Started 
 
