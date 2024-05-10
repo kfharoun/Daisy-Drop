@@ -1,6 +1,6 @@
 # Daisy Drop !
 ## Wireframe
-![wireframe](wireframe.png)
+![wireframe](https://i.imgur.com/RgwjKOH.png)
 
 ### What I Want 
 * a 2048 game using flower characters instead of numbers 
@@ -28,3 +28,8 @@
 * make basic html outline to get game info 
 * start in JS to get piece to show up in random square 
 * slide function 
+
+
+### General Timeline 
+
+* by Monday
