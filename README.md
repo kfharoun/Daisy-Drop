@@ -19,6 +19,7 @@
 * The score tells you what your highest flower is 
 * To Win says which flower you need to win 
 * restart button resets the board 
+* (if i have time): dark mode switch button
 
 ### Questions I Have 
 
@@ -58,6 +59,7 @@
 ### General Timeline 
 
 * **by Monday** -> have html outline and get too halfway point of making the game functional
+   * basic logic for 2048
 
 * **tuesday** -> work on function probs 
 
@@ -65,4 +67,50 @@
 
 * **thursday** -> finish any problems, attempt dark mode
 
+
+### Sources
+
+* asked chat gpt to give me a 4x4 matrix so i could see how it was formatted, and what it logged in the console. this is what it returned
+
+```javascript
+class Matrix4x4 {
+    constructor() {
+        this.data = new Array(4);
+        for (let i = 0; i < 4; i++) {
+            this.data[i] = new Array(4).fill(0);
+        }
+    }
+
+    set(row, col, value) {
+        if (row >= 0 && row < 4 && col >= 0 && col < 4) {
+            this.data[row][col] = value;
+        } else {
+            console.error("Index out of range");
+        }
+    }
+
+    get(row, col) {
+        if (row >= 0 && row < 4 && col >= 0 && col < 4) {
+            return this.data[row][col];
+        } else {
+            console.error("Index out of range");
+            return null;
+        }
+    }
+
+    print() {
+        for (let i = 0; i < 4; i++) {
+            console.log(this.data[i].join('\t'));
+        }
+    }
+}
+
+// Example usage:
+const matrix = new Matrix4x4();
+matrix.set(0, 0, 1);
+matrix.set(1, 1, 1);
+matrix.set(2, 2, 1);
+matrix.set(3, 3, 1);
+matrix.print();
+```
 
