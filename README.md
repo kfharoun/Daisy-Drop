@@ -1,7 +1,8 @@
 # Daisy Drop !
 ## Wireframe
-![wireframe](https://i.imgur.com/RgwjKOH.png)
+![wireframelight](https://i.imgur.com/RgwjKOH.png)
 
+![wireframedark](https://i.imgur.com/E1RU3YR.png)
 ### What I Want 
 * a 2048 game using flower characters instead of numbers 
 * when a flower is swiped to another flower it creates the next level up
@@ -32,4 +33,12 @@
 
 ### General Timeline 
 
-* by Monday
+* by Monday -> have html outline and get too halfway point of making the game functional
+
+* tuesday -> work on function probs 
+
+* wednesday -> draw characters + background, add them in to the board
+
+* thursday -> finish any problems, attempt dark mode
+
+
