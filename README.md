@@ -20,9 +20,17 @@
 
 ### Questions I Have 
 
-* Should I change the to win to best score? 
-    * can score be logged 
-* Can the starting piece start somewhere random?
+* ~~Should I change the to win to best score?~~
+    * won't be doing this - i'd have to add characters for getting higher than 2048
+        * so game will end when player reaches 2048
+* ~~Can the starting piece start somewhere random?~~
+    * **with a matrix** *(thanks will!)*
+
+         0 1 2 3
+
+        0 1 2 3
+
+        0 1 2 3
 * Am I too overzealous for wanting to draw the flower characters 
 
 ### How to get Started 
@@ -47,12 +55,12 @@
 
 ### General Timeline 
 
-* by Monday -> have html outline and get too halfway point of making the game functional
+* **by Monday** -> have html outline and get too halfway point of making the game functional
 
-* tuesday -> work on function probs 
+* **tuesday** -> work on function probs 
 
-* wednesday -> draw characters + background, add them in to the board
+* **wednesday** -> draw characters + background, add them in to the board
 
-* thursday -> finish any problems, attempt dark mode
+* **thursday** -> finish any problems, attempt dark mode
 
 
