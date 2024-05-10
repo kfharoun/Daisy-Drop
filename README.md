@@ -1,7 +1,8 @@
 # Daisy Drop !
 ## Wireframe
+**Light Mode**
 ![wireframelight](https://i.imgur.com/RgwjKOH.png)
-
+**Dark Mode**
 ![wireframedark](https://i.imgur.com/E1RU3YR.png)
 ### What I Want 
 * a 2048 game using flower characters instead of numbers 
@@ -30,6 +31,19 @@
 * start in JS to get piece to show up in random square 
 * slide function 
 
+## Visual Elements Needed
+
+- [] 2
+- [] 4
+- [] 8
+- [] 16
+- [] 32
+- [] 64
+- [] 128
+- [] 256
+- [] 512
+- [] 1024
+- [] 2048
 
 ### General Timeline 
 
