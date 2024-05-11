@@ -52,17 +52,34 @@
 
 /*-------------------------------- Constants --------------------------------*/
 
-// const cell = document.querySelector(".cell")
-// const score = document.querySelector(".char")
-
+const cells = document.querySelectorAll(".cell")
+// console.log(cells[2])
+const numRows = 4
+const numCols = 4
+const matrix = []
 /*-------------------------------- variables --------------------------------*/
+
+let score
+let scoreVal = document.querySelector(".char")
+
 
 
 /*-------------------------------- Functions --------------------------------*/
-
-const init = () => {
-    randomNumber()
-}
+//assign html of row to the matrix 
+let row = []
+for (let i = 1 ; i < cells.length ; index++)
+    if (i % numCols === 0){
+        let cell = cells[i-1]
+        cell.firstElementChild.innerText = ``
+        row.push(cell)
+        matrix.push(row)
+        row = []
+    } else {
+        let cell = cells[i-1]
+        cell.firstElementChild.innerText = ``
+        row.push(cell)
+    }
+console.log(matrix)
 
 //if random number = 1 then it's a 4, otherwise it's a 2
 const randomNumber = () => {
@@ -72,17 +89,27 @@ const randomNumber = () => {
         return 2
     }
 }
-console.log(randomNumber())
+
+// // randomly assign # to two grid blocks
+// const rowCol = () => {
+//     while (true) {
+//         let rowNum = getRandomNumber()
+//         let columnNum = getRandomNumber()
+//         if (rowNum !== columnNum) {
+//             break
+//         }
+//     }
+// }
 
 let moveCell = (event) => {
     if (event.key == "ArrowLeft") {
-        console.log(`left`)
+        cells.innerText = randomNumber()
     } else if (event.key == "ArrowRight"){
-        console.log(`right`)
+        cells.innerText = randomNumber()
     } else if (event.key == "ArrowDown"){
-        console.log(`down`)
+        cells.innerText = randomNumber()
     } else if (event.key == "ArrowUp"){
-        console.log(`up`)
+        cells.innerText = randomNumber()
     }
 }
 

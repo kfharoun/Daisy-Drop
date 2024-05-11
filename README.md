@@ -89,3 +89,5 @@
 *[math random](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random)
 
 *[key code table](https://www.toptal.com/developers/keycode/table)
+
+*[my hero to understanding matrixes](https://ece.uwaterloo.ca/~dwharder/Matlab/assigning.html)
