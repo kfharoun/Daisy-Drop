@@ -61,12 +61,19 @@ const matrix = []
 
 let score
 let scoreVal = document.querySelector(".char")
-
+let row = []
+let num1 = Math.floor(Math.random() * 4)
+let num2 = num1
 
 
 /*-------------------------------- Functions --------------------------------*/
+
+let init = () => {
+    startGame()
+}
 //assign html of row to the matrix 
-let row = []
+// A game of 2048 is played on a 4×4 board
+let startGame= () => {
 for (let i = 1 ; i <= cells.length ; i++){
     let cell = cells[i-1]
     if (i % numCols === 0){
@@ -79,29 +86,33 @@ for (let i = 1 ; i <= cells.length ; i++){
         row.push(cell)
     }
 }
+}
 console.log(matrix)
+
+// checking if matrix works for each square
+// matrix.forEach(row => {
+//     row.forEach(cell => {
+//         cell.innerText = randomNumber()
+//     })
+// })
 
 //if random number = 1 then it's a 4, otherwise it's a 2
 const randomNumber = () => {
-    return Math.random() < 0.1 ? 4 : 2
+    return Math.floor(Math.random() < 0.1 ? 4 : 2
+    )}
+    console.log(randomNumber())
+
+const findEmptyCell = () => {
+    for (let i = 0 ; i < cells.length ; i++) {
+    if (cells[i].innerText===""){
+        return cells[i]
+    }
+    
+    return null //if no empty cell is found
 }
-
-matrix.forEach(row => {
-    row.forEach(cell => {
-        cell.innerText = randomNumber()
-    })
-})
-
-// // randomly assign # to two grid blocks
-// const rowCol = () => {
-//     while (true) {
-//         let rowNum = getRandomNumber()
-//         let columnNum = getRandomNumber()
-//         if (rowNum !== columnNum) {
-//             break
-//         }
-//     }
-// }
+}
+// let emptyCell = findEmptyCell()
+// console.log(`here! ${emptyCell.id}`)
 
 let moveCell = (event) => {
     if (event.key == "ArrowLeft") {

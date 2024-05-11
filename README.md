@@ -44,7 +44,7 @@
 
 ## Algorithm
 
-- [] A game of 2048 is played on a 4×4 board.
+- [x] A game of 2048 is played on a 4×4 board.
 - [] Each position on the board may be empty or may contain a tile, and each tile will have a number on it
 - [x] When we start, the board will have two tiles in random locations, each of which either has a “2” or a “4” on it – each has an independent 10% chance of being a “4”, or otherwise a is a “2”
 - [] Moves are performed by shifting all tiles towards one edge – up, down, left, or right.
