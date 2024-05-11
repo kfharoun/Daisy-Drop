@@ -91,3 +91,5 @@
 *[key code table](https://www.toptal.com/developers/keycode/table)
 
 *[my hero to understanding matrixes](https://ece.uwaterloo.ca/~dwharder/Matlab/assigning.html)
+
+* my dad helped me with my move cell function by telling me about key positioning, and by adding the new position function after the switch case

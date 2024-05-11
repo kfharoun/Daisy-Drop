@@ -54,23 +54,21 @@
 
 const cells = document.querySelectorAll(".cell")
 // console.log(cells[2])
-const numRows = 4
-const numCols = 4
 const matrix = []
 /*-------------------------------- variables --------------------------------*/
 
 let score
 let scoreVal = document.querySelector(".char")
 let row = []
-let num1 = Math.floor(Math.random() * 4)
-let num2 = num1
+let numRow = 0
+let numCol = 0
 
 
 /*-------------------------------- Functions --------------------------------*/
 
-let init = () => {
-    startGame()
-}
+// let init = () => {
+//     startGame()
+// }
 //assign html of row to the matrix 
 // A game of 2048 is played on a 4×4 board
 let startGame= () => {
@@ -115,17 +113,41 @@ const findEmptyCell = () => {
 // console.log(`here! ${emptyCell.id}`)
 
 let moveCell = (event) => {
-    if (event.key == "ArrowLeft") {
-        cells.innerText = randomNumber()
-    } else if (event.key == "ArrowRight"){
-        cells.innerText = randomNumber()
-    } else if (event.key == "ArrowDown"){
-        cells.innerText = randomNumber()
-    } else if (event.key == "ArrowUp"){
-        cells.innerText = randomNumber()
+    let key = event.key
+    switch(key) {
+        case "ArrowLeft":
+            if (numCol > 0){
+                numCol--
+            }
+        break
+        case "ArrowRight": 
+            if (numRow > 0){
+                numRow++
+            }
+        break
+        case "ArrowUp":
+            if (numCol < 4){
+                numCol--
+            }
+        break
+        case "ArrowDown":
+            if (numRow < 4){
+                numRow --
+            }
+        break
     }
+    // shifting right is +1
+    // shifting left -1 
+    // shifting down +1
+    // shifting up -1
+    const newPosition = numRow * 4 + numCol
+    cells.forEach((cell, position)=> {
+        cell.classList.remove(`active`)
+        if (position == newPosition){
+            cell.classList.add(`active`)
+        }
+    })
 }
-
 /*-------------------------------- Event Listeners --------------------------------*/
 document.addEventListener(`keydown`, moveCell)
 
