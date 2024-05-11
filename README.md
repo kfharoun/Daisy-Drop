@@ -93,3 +93,5 @@
 *[my hero to understanding matrixes](https://ece.uwaterloo.ca/~dwharder/Matlab/assigning.html)
 
 * my dad helped me with my move cell function by telling me about key positioning, and by adding the new position function after the switch case
+
+* [when i pressed a key, the number would place one at a time in each box. this is how i learned to shuffle an array](https://dev.to/codebubb/how-to-shuffle-an-array-in-javascript-2ikj)

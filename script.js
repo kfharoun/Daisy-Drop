@@ -101,19 +101,26 @@ const randomNumber = () => {
     console.log(randomNumber())
 
 const findEmptyCell = () => {
-    for (let i = 0 ; i < cells.length ; i++) {
-    if (cells[i].innerText===""){
-        return cells[i]
+    const shuffleArray = (array) => {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
     }
-    
-    return null //if no empty cell is found
+    const shuffledArray = shuffleArray(Array.from(cells))
+    for (let i = 0 ; i < cells.length ; i++) {
+    if (shuffledArray[i].innerText===""){
+        return shuffledArray[i]
+    }
 }
 }
-// let emptyCell = findEmptyCell()
+
 // console.log(`here! ${emptyCell.id}`)
 
 let moveCell = (event) => {
     let key = event.key
+    let emptyCell = findEmptyCell()
     switch(key) {
         case "ArrowLeft":
             if (numCol > 0){
@@ -147,7 +154,14 @@ let moveCell = (event) => {
             cell.classList.add(`active`)
         }
     })
-}
+    if (key === "ArrowLeft" || key === "ArrowRight" || key === "ArrowUp" || key === "ArrowDown"){
+        const emptyCell = findEmptyCell()
+        if (emptyCell) {
+            emptyCell.innerText = randomNumber()
+        }
+        }
+    }
+
 /*-------------------------------- Event Listeners --------------------------------*/
 document.addEventListener(`keydown`, moveCell)
 
