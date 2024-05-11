@@ -67,28 +67,30 @@ let scoreVal = document.querySelector(".char")
 /*-------------------------------- Functions --------------------------------*/
 //assign html of row to the matrix 
 let row = []
-for (let i = 1 ; i < cells.length ; index++)
+for (let i = 1 ; i <= cells.length ; i++){
+    let cell = cells[i-1]
     if (i % numCols === 0){
-        let cell = cells[i-1]
-        cell.firstElementChild.innerText = ``
+        cell.innerText = ``
         row.push(cell)
         matrix.push(row)
         row = []
     } else {
-        let cell = cells[i-1]
-        cell.firstElementChild.innerText = ``
+        cell.innerText = ``
         row.push(cell)
     }
+}
 console.log(matrix)
 
 //if random number = 1 then it's a 4, otherwise it's a 2
 const randomNumber = () => {
-    if (Math.floor(Math.random() * 10)+1 == 1){
-        return 4
-    } else {
-        return 2
-    }
+    return Math.random() < 0.1 ? 4 : 2
 }
+
+matrix.forEach(row => {
+    row.forEach(cell => {
+        cell.innerText = randomNumber()
+    })
+})
 
 // // randomly assign # to two grid blocks
 // const rowCol = () => {
