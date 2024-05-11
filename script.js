@@ -66,15 +66,15 @@ let numCol = 0
 
 /*-------------------------------- Functions --------------------------------*/
 
-// let init = () => {
-//     startGame()
-// }
-//assign html of row to the matrix 
+let init = () => {
+    startGame()
+}
+// assign html of row to the matrix 
 // A game of 2048 is played on a 4×4 board
 let startGame= () => {
 for (let i = 1 ; i <= cells.length ; i++){
     let cell = cells[i-1]
-    if (i % numCols === 0){
+    if (i % 4 === 0){
         cell.innerText = ``
         row.push(cell)
         matrix.push(row)
@@ -84,8 +84,14 @@ for (let i = 1 ; i <= cells.length ; i++){
         row.push(cell)
     }
 }
+for (let i = 0; i < 2; i++){
+    const emptyCell = findEmptyCell()
+    if (emptyCell){
+        emptyCell.innerText = 2
+    }
 }
-console.log(matrix)
+}
+// console.log(matrix)
 
 // checking if matrix works for each square
 // matrix.forEach(row => {
@@ -164,7 +170,9 @@ let moveCell = (event) => {
 
 /*-------------------------------- Event Listeners --------------------------------*/
 document.addEventListener(`keydown`, moveCell)
-
+document.addEventListener(`DOMContentLoaded`, function(){
+    init()
+})
 
 
 
