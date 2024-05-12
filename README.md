@@ -47,8 +47,8 @@
 - [x] A game of 2048 is played on a 4×4 board.
 - [] Each position on the board may be empty or may contain a tile, and each tile will have a number on it
 - [x] When we start, the board will have two tiles in random locations, each of which either has a “2” or a “4” on it – each has an independent 10% chance of being a “4”, or otherwise a is a “2”
-- [] Moves are performed by shifting all tiles towards one edge – up, down, left, or right.
-- [] Any tiles with the same value that are adjacent to each other and are moving together will merge and end up with a new tile equal to the sum of the earlier two.
+- [x] Moves are performed by shifting all tiles towards one edge – up, down, left, or right.
+- [x] Any tiles with the same value that are adjacent to each other and are moving together will merge and end up with a new tile equal to the sum of the earlier two.
 - [] After we’ve made a move, a new tile will be placed onto the board. 
 - [] The game then continues until there are no more moves possible.
 - [] Player has won once they have reached 2048
@@ -99,6 +99,7 @@
 * [while loop clarification](https://www.w3schools.com/js/js_loop_while.asp)
 
 * chatGPT to:
+    * copy and pasted code in whenever i forgot a bracket somewhere or to see how a piece of code could be written more streamlined 
     * figure out how to add animation / sliding function
         ```javascript
             if (moved) {
@@ -108,5 +109,17 @@
                 emptyCell.innerText = randomNumber();
             }
         }, 500); // timeout delay
-   
+    > >>>> also
+    ``` javascript 
+    let moveCell = (cell, newRow, newCol) => {
+    const cellSize = 71;
+    if (cell.innerText !== "") { 
+        cell.style.transition = "left 0.5s, top 0.5s";
+        cell.style.left = `${newCol * cellSize}px`;
+        cell.style.top = `${newRow * cellSize}px`;
+    }
 ```
+
+* [2048 code i looked at for an example 1](https://www.geeksforgeeks.org/design-a-2048-game-in-javascript/)
+* [2048 code i looked at for an example 2](https://medium.com/@aswingiftson007/2048-game-in-html-and-javascript-c6cc63d2698f)
+*[2048 code i looked at for an example 3](https://codepen.io/fabi_yo_/pen/zNrmwZ)

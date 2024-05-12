@@ -102,9 +102,9 @@ for (let i = 0; i < 2; i++){
 
 //if random number = 1 then it's a 4, otherwise it's a 2
 const randomNumber = () => {
-    return Math.floor(Math.random() < 0.1 ? 4 : 2
-    )}
-    console.log(randomNumber())
+    return Math.floor(Math.random() < 0.1 ? 4 : 2)
+}
+    // console.log(randomNumber())
 
 const findEmptyCell = () => {
     const shuffleArray = (array) => {
@@ -122,26 +122,31 @@ const findEmptyCell = () => {
 }
 }
 
+let emptyCell = findEmptyCell()
+
+
 // console.log(`here! ${emptyCell.id}`)
 
-// let moveCell = (cell, newRow, newCol) => {
-//     const cellSize = 71;
-//     if (cell.innerText !== "") { // check if cell contains a number
-//         cell.style.transition = "left 0.5s, top 0.5s";
-//         cell.style.left = `${newCol * cellSize}px`;
-//         cell.style.top = `${newRow * cellSize}px`;
-//     }
-// }
+let cellAnimation = (cell, newRow, newCol) => {
+    const cellSize = 71;
+    if (cell.innerText !== "") { // check if cell contains a number
+        cell.style.transition = "left 0.5s, top 0.5s";
+        cell.style.left = `${newCol * cellSize}px`;
+        cell.style.top = `${newRow * cellSize}px`;
+    }
+}
 
 // checks if current cell can move or merge with neighbor cell
 let moveMerge = (row, col, changeRow, changeCol) => {
     let cell = matrix[row][col]
     let newRow = row
     let newCol = col
+    let moved = false
 
     while (checkMove(newRow + changeRow, newCol + changeCol) && (matrix[newRow + changeRow][newCol + changeCol].innerText === "" || matrix[newRow + changeRow][newCol + changeCol].innerText === cell.innerText)) {
         newRow += changeRow
         newCol += changeCol
+        moved = true 
 }
     if (newRow != row || newCol != col){
         if (matrix[newRow][newCol].innerText===""){
@@ -151,10 +156,9 @@ let moveMerge = (row, col, changeRow, changeCol) => {
             matrix [newRow][newCol].innerText = newValue
         }
         if (cell.innerText = ""){
-        return true
-    } else {
-    return false
+        return moved
     }
+    return moved 
     }
 }
 // checks if row and column are in bounds of the grid
@@ -169,40 +173,42 @@ let keyClick = (event) => {
         case "ArrowLeft":
             for (let col = 1; col <4; col++){
                 for (let row = 0; row < 4; row++){
-                    moved = moved | moveMerge(row,col,0, -1) //returns true if a move or merge occured 
+                    moved = moved || moveMerge(row,col,0, -1) //returns true if a move or merge occured 
                 }
             }
             break
         case "ArrowRight":
             for (let col = 2 ; col >= 0; col--){
                 for (let row = 0; row <4; row++){
-                    moved = moved | moveMerge(row, col, 0, 1)
+                    moved =  moved || moveMerge(row, col, 0, 1)
                 }
             }
             break
         case "ArrowUp":
     for (let row = 1 ; row < 4 ; row++ ){
         for (let col = 0 ; col < 4 ; col++){
-            moved = moved | moveMerge(row, col, -1, 0)
+            moved = moved || moveMerge(row, col, -1, 0)
         }
     }
             break
         case "ArrowDown":
             for (let row = 2 ; row >= 0 ; row--){
                 for(let col = 0; col < 4; col++){
-                    moved = moved | moveMerge(row, col, 1, 0)
+                    moved = moveMerge(row, col, 1, 0)
                 }
             }
             break
 }
-            if (moved) {
+            if (moved){
                 setTimeout(() => {
                     let emptyCell = findEmptyCell()
+                    let number = randomNumber()
                     if (emptyCell){
-                        emptyCell.innetText = randomNumber()
-                    }
-                }, 500)
-            }
+                        emptyCell.innerText = number
+                    } 
+                }, 100)
+            } 
+            console.log(moved)
 }
 
 
