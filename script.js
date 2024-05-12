@@ -124,52 +124,91 @@ const findEmptyCell = () => {
 
 // console.log(`here! ${emptyCell.id}`)
 
-let moveCell = (event) => {
+// let moveCell = (cell, newRow, newCol) => {
+//     const cellSize = 71;
+//     if (cell.innerText !== "") { // check if cell contains a number
+//         cell.style.transition = "left 0.5s, top 0.5s";
+//         cell.style.left = `${newCol * cellSize}px`;
+//         cell.style.top = `${newRow * cellSize}px`;
+//     }
+// }
+
+// checks if current cell can move or merge with neighbor cell
+let moveMerge = (row, col, changeRow, changeCol) => {
+    let cell = matrix[row][col]
+    let newRow = row
+    let newCol = col
+
+    while (checkMove(newRow + changeRow, newCol + changeCol) && (matrix[newRow + changeRow][newCol + changeCol].innerText === "" || matrix[newRow + changeRow][newCol + changeCol].innerText === cell.innerText)) {
+        newRow += changeRow
+        newCol += changeCol
+}
+    if (newRow != row || newCol != col){
+        if (matrix[newRow][newCol].innerText===""){
+            matrix[newRow][newCol].innerText = cell.innerText
+        } else {
+            let newValue = parseInt(cell.innerText) * 2
+            matrix [newRow][newCol].innerText = newValue
+        }
+        if (cell.innerText = ""){
+        return true
+    } else {
+    return false
+    }
+    }
+}
+// checks if row and column are in bounds of the grid
+let checkMove = (row, col) => {return row >= 0 && row < 4 && col >= 0 && col <4}
+
+// determines direction of the key press and moves over each cell in the clicked direction
+let keyClick = (event) => {
     let key = event.key
-    let emptyCell = findEmptyCell()
-    switch(key) {
+    let moved = false
+
+    switch(key){
         case "ArrowLeft":
-            if (numCol > 0){
-                numCol--
+            for (let col = 1; col <4; col++){
+                for (let row = 0; row < 4; row++){
+                    moved = moved | moveMerge(row,col,0, -1) //returns true if a move or merge occured 
+                }
             }
-        break
-        case "ArrowRight": 
-            if (numRow > 0){
-                numRow++
+            break
+        case "ArrowRight":
+            for (let col = 2 ; col >= 0; col--){
+                for (let row = 0; row <4; row++){
+                    moved = moved | moveMerge(row, col, 0, 1)
+                }
             }
-        break
+            break
         case "ArrowUp":
-            if (numCol < 4){
-                numCol--
-            }
-        break
+    for (let row = 1 ; row < 4 ; row++ ){
+        for (let col = 0 ; col < 4 ; col++){
+            moved = moved | moveMerge(row, col, -1, 0)
+        }
+    }
+            break
         case "ArrowDown":
-            if (numRow < 4){
-                numRow --
+            for (let row = 2 ; row >= 0 ; row--){
+                for(let col = 0; col < 4; col++){
+                    moved = moved | moveMerge(row, col, 1, 0)
+                }
             }
-        break
-    }
-    // shifting right is +1
-    // shifting left -1 
-    // shifting down +1
-    // shifting up -1
-    const newPosition = numRow * 4 + numCol
-    cells.forEach((cell, position)=> {
-        cell.classList.remove(`active`)
-        if (position == newPosition){
-            cell.classList.add(`active`)
-        }
-    })
-    if (key === "ArrowLeft" || key === "ArrowRight" || key === "ArrowUp" || key === "ArrowDown"){
-        const emptyCell = findEmptyCell()
-        if (emptyCell) {
-            emptyCell.innerText = randomNumber()
-        }
-        }
-    }
+            break
+}
+            if (moved) {
+                setTimeout(() => {
+                    let emptyCell = findEmptyCell()
+                    if (emptyCell){
+                        emptyCell.innetText = randomNumber()
+                    }
+                }, 500)
+            }
+}
+
+
 
 /*-------------------------------- Event Listeners --------------------------------*/
-document.addEventListener(`keydown`, moveCell)
+document.addEventListener(`keydown`, keyClick)
 document.addEventListener(`DOMContentLoaded`, function(){
     init()
 })

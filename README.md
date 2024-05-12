@@ -95,3 +95,18 @@
 * my dad helped me with my move cell function by telling me about key positioning, and by adding the new position function after the switch case
 
 * [when i pressed a key, the number would place one at a time in each box. this is how i learned to shuffle an array](https://dev.to/codebubb/how-to-shuffle-an-array-in-javascript-2ikj)
+
+* [while loop clarification](https://www.w3schools.com/js/js_loop_while.asp)
+
+* chatGPT to:
+    * figure out how to add animation / sliding function
+        ```javascript
+            if (moved) {
+        setTimeout(() => {
+            const emptyCell = findEmptyCell();
+            if (emptyCell) {
+                emptyCell.innerText = randomNumber();
+            }
+        }, 500); // timeout delay
+   
+```
