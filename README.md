@@ -49,7 +49,7 @@
 - [x] When we start, the board will have two tiles in random locations, each of which either has a “2” or a “4” on it – each has an independent 10% chance of being a “4”, or otherwise a is a “2”
 - [x] Moves are performed by shifting all tiles towards one edge – up, down, left, or right.
 - [x] Any tiles with the same value that are adjacent to each other and are moving together will merge and end up with a new tile equal to the sum of the earlier two.
-- [] After we’ve made a move, a new tile will be placed onto the board. 
+- [x] After we’ve made a move, a new tile will be placed onto the board. 
 - [] The game then continues until there are no more moves possible.
 - [] Player has won once they have reached 2048
 
