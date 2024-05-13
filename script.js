@@ -66,8 +66,9 @@ const cells = document.querySelectorAll(".cell")
 const matrix = []
 /*-------------------------------- variables --------------------------------*/
 
-let score = document.querySelector(`.score`)
+let scoreElement = document.querySelector(`.score`)
 let row = []
+let col = []
 let numRow = null
 let numCol = null
 let moved = false
@@ -78,6 +79,7 @@ let moved = false
 let init = () => {
     startGame()
     document.addEventListener(`keydown`, keyClick)
+    updateScore()
 
 }
 // assign html of row to the matrix 
@@ -100,6 +102,7 @@ for (let i = 0; i < 2; i++){
     if (emptyCell){
         emptyCell.innerText = 2
     }
+    //console.log(matrix)
 }
 }
 
@@ -108,6 +111,7 @@ const randomNumber = () => {
     return Math.floor(Math.random() < 0.1 ? 4 : 2)
 }
     // console.log(randomNumber())
+
 
 const findEmptyCell = () => {
     const shuffleArray = (array) => {
@@ -125,7 +129,6 @@ const findEmptyCell = () => {
 }
 }
 
-// let emptyCell = findEmptyCell()
 
 
 // console.log(`here! ${emptyCell.id}`)
@@ -142,18 +145,23 @@ let cellAnimation = (cell, newRow, newCol) => {
 // checks if current cell can move or merge with neighbor cell
 //which cells are being referenced 
 //track as it's moving thru the grid 
+
 let moveMerge = (row, col, changeRow, changeCol) => {
+    
+    //console.log(matrix)
     let cell = matrix[row][col]
     let newRow = row
     let newCol = col
-    let movedOrMerged = false 
+    // moved = false 
 //console.log(cell)
 //move to new row and column is valid -> // the cell at the new position is empty or has the same value as the current cell
+// if (cell.innerText != ``){
     while (checkMove(newRow + changeRow, newCol + changeCol) && (matrix[newRow + changeRow][newCol + changeCol].innerText === "" || matrix[newRow + changeRow][newCol + changeCol].innerText === cell.innerText)) {
+        // console.log(`checkMove`)
         newRow += changeRow //updates variable -> determines up or down
         newCol += changeCol //updates variable -> determines left or right
-        movedOrMerged = true
-}
+        // moved = true
+    }
     if (newRow != row || newCol != col){ //checks if final position is different from start position
         if (matrix[newRow][newCol].innerText===""){//if they're different, cell moved or merged
             matrix[newRow][newCol].innerText = cell.innerText //if it's empty content of cell is moved to final position
@@ -164,10 +172,12 @@ let moveMerge = (row, col, changeRow, changeCol) => {
             matrix[row][col].innerText = ""
             
         }
-        // return true
+        return true 
     } 
-    return movedOrMerged 
+    return false
+    console.log(moved)
 }
+//}
 
 
 // checks if row and column are in bounds of the grid
@@ -177,51 +187,63 @@ let checkMove = (row, col) => {return row >= 0 && row < 4 && col >= 0 && col <4}
 // determines direction of the key press and moves over each cell in the clicked direction
 let keyClick = (event) => {
     let key = event.key
-    let moved = false
+    moved = false
 
     switch(key) {
         case "ArrowLeft":
             for (let col = 1; col < 4; col++) {
-                for (let row = 0; row < 4; row++) {
-                    if(moveMerge(row, col, 0, -1)){
-                        moved = true
-                    } else {
-                        moved == false
-                    }
+                for (let row = 0; row < 4; row++){
+                    // console.log(row)
+                   moved = moveMerge(row, col, 0, -1)
                 }
             }
+            newNumber(moved)
+            moved = false
             console.log(moved)
             break
 
         case "ArrowRight":
             for (let col = 2; col >= 0; col--) {
                 for (let row = 0; row < 4; row++) {
-                    moved = moveMerge(row, col, 0, 1) || moved
+                    moved = moveMerge(row, col, 0, 1) 
                 }
             }
+            
+            newNumber(moved)
+            moved = false
             console.log(moved + " right")
             break
 
         case "ArrowUp":
             for (let row = 1; row < 4; row++) {
                 for (let col = 0; col < 4; col++) {
-                    moved = moveMerge(row, col, -1, 0) || moved
+                    moved = moveMerge(row, col, -1, 0) 
                 }
             }
+            
+            newNumber(moved)
+            moved = false
             console.log(moved + " up")
             break
 
         case "ArrowDown":
             for (let row = 2; row >= 0; row--) {
                 for (let col = 0; col < 4; col++){
-                    moved = moveMerge(row, col, 1, 0) || moved
+                    moved = moveMerge(row, col, 1, 0) 
                 }
             }
+            
+            newNumber(moved)
+            moved = false
             console.log(moved + " down")
             break
     }
 
-    if (moved = true) {
+   
+}
+
+let newNumber = (moved) => {
+    if (moved) {
         setTimeout(() => {
             let emptyCell = findEmptyCell()
             if (emptyCell) {
@@ -231,18 +253,19 @@ let keyClick = (event) => {
     }
 }
 
-// let updateScore = () => {
-//     let maxScoreVal = 0
-//     for(let row = 0; row <4; row++){
-//         for(let col = 0; col < 4; col++){
-//             let scoreVal = parseInt(matrix[row][col].innerText)
-//             if (!isNaN(scoreVal) && cellValue > maxScoreVal) {
-//                 max
-//             }
-//         }
-//     }
-//     })
-// }
+
+let updateScore = () => {
+    let maxScoreVal = -Infinity
+    for (let row = 0; row < 4; row++) {
+        for (let col = 0; col < 4; col++) {
+            let cellValue = parseInt(matrix[row][col].innerText);
+            if (!isNaN(cellValue) && cellValue > maxScoreVal) {
+                maxScoreVal = cellValue;
+            }
+        }
+    }
+    scoreElement.textContent = maxScoreVal.toString()
+}
 /*-------------------------------- Event Listeners --------------------------------*/
 
 document.addEventListener(`DOMContentLoaded`, function(){
