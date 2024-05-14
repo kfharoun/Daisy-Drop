@@ -72,6 +72,7 @@ let col = []
 let numRow = null
 let numCol = null
 let moved = false
+let button = document.querySelector(`#reset`)
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -278,7 +279,6 @@ let updateScore = () => {
 }
 
 const checkWin = () => {
-    const checkWin = () => {
         for (let row = 0; row < 4; row++) {
             for (let col = 0; col < 4; col++) {
                 if (matrix[row][col].innerText === "2048") {
@@ -289,7 +289,6 @@ const checkWin = () => {
         }
         return false
     }
-}
 
 const checkGameOver = () => {
     if (!findEmptyCell()) {
@@ -308,12 +307,22 @@ const checkGameOver = () => {
     }
     return false
 }
+
+
+let resetGame = (event) => {
+    window.location.reload()
+}
 /*-------------------------------- Event Listeners --------------------------------*/
 
 document.addEventListener(`DOMContentLoaded`, function(){
     init()
 })
 
+document.addEventListener(`click`, function(event) {
+    if (event.target.id === `reset`){
+        resetGame()
+    }
+})
 //a new check variable 
     //set variable if it's already done the merge in that turn
     // if youre swiping to the left itll start adding leftmost cells first
