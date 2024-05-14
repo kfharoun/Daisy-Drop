@@ -201,7 +201,8 @@ let keyClick = (event) => {
                    moved = moveMerge(row, col, 0, -1)
                 }
             }
-            newNumber(moved)
+            if (!checkWin() && !checkGameOver()) {
+                newNumber(moved)}
             //moved = false
             console.log(moved + " left")
             break
@@ -213,7 +214,8 @@ let keyClick = (event) => {
                 }
             }
             
-            newNumber(moved)
+            if (!checkWin() && !checkGameOver()) {
+                newNumber(moved)}
             //moved = false
             console.log(moved + " right")
             break
@@ -225,7 +227,8 @@ let keyClick = (event) => {
                 }
             }
             
-            newNumber(moved)
+            if (!checkWin() && !checkGameOver()) {
+                newNumber(moved)}
             //moved = false
             console.log(moved + " up")
             break
@@ -237,7 +240,8 @@ let keyClick = (event) => {
                 }
             }
             
-            newNumber(moved)
+            if (!checkWin() && !checkGameOver()) {
+                newNumber(moved)}
             //moved = false
             console.log(moved + " down")
             break
@@ -271,6 +275,38 @@ let updateScore = () => {
         }
     }
     scoreElement.textContent = maxScoreVal.toString()
+}
+
+const checkWin = () => {
+    const checkWin = () => {
+        for (let row = 0; row < 4; row++) {
+            for (let col = 0; col < 4; col++) {
+                if (matrix[row][col].innerText === "2048") {
+                    //player won appears here
+                    return true
+                }
+            }
+        }
+        return false
+    }
+}
+
+const checkGameOver = () => {
+    if (!findEmptyCell()) {
+        for (let row = 0; row < 4; row++) {
+            for (let col = 0; col < 4; col++) {
+                if (
+                    (checkMove(row + 1, col) && matrix[row][col].innerText === matrix[row + 1][col].innerText) ||
+                    (checkMove(row, col + 1) && matrix[row][col].innerText === matrix[row][col + 1].innerText)
+                ) {
+                    return false
+                }
+            }
+        }
+        //gameover window appears here
+        return true
+    }
+    return false
 }
 /*-------------------------------- Event Listeners --------------------------------*/
 
