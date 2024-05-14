@@ -100,6 +100,7 @@
 
 * chatGPT to:
     * copy and pasted code in whenever i forgot a bracket somewhere or to see how a piece of code could be written more streamlined 
+    * we became besties when debugging the moveMerge function, it helped me a lot with knowing which console logs to put where! 
     * figure out how to add animation / sliding function
         ```javascript
             if (moved) {

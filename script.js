@@ -147,37 +147,41 @@ let cellAnimation = (cell, newRow, newCol) => {
 //track as it's moving thru the grid 
 
 let moveMerge = (row, col, changeRow, changeCol) => {
-    
-    //console.log(matrix)
     let cell = matrix[row][col]
     let newRow = row
     let newCol = col
-    // moved = false 
-//console.log(cell)
-//move to new row and column is valid -> // the cell at the new position is empty or has the same value as the current cell
-// if (cell.innerText != ``){
-    while (checkMove(newRow + changeRow, newCol + changeCol) && (matrix[newRow + changeRow][newCol + changeCol].innerText === "" || matrix[newRow + changeRow][newCol + changeCol].innerText === cell.innerText)) {
-        // console.log(`checkMove`)
-        newRow += changeRow //updates variable -> determines up or down
-        newCol += changeCol //updates variable -> determines left or right
-        // moved = true
+    let movedOrMerged = false
+
+    while (checkMove(newRow + changeRow, newCol + changeCol) && (matrix[newRow + changeRow][newCol + changeCol]?.innerText === "" || matrix[newRow + changeRow][newCol + changeCol]?.innerText === cell.innerText)) {
+        newRow += changeRow
+        newCol += changeCol
+        movedOrMerged = true
     }
-    if (newRow != row || newCol != col){ //checks if final position is different from start position
-        if (matrix[newRow][newCol].innerText===""){//if they're different, cell moved or merged
-            matrix[newRow][newCol].innerText = cell.innerText //if it's empty content of cell is moved to final position
-            matrix[row][col].innerText = ""//why is it only logging some cells
-        } else { //if cell is not empty
-            let newValue = parseInt(cell.innerText) * 2 //the value is doubled
-            matrix [newRow][newCol].innerText = newValue.toString() //double value placed in final position
+
+    if (newRow !== row || newCol !== col) {
+        if (matrix[newRow][newCol].innerText === "") {
+            matrix[newRow][newCol].innerText = cell.innerText;
             matrix[row][col].innerText = ""
-            
+            movedOrMerged = true
+        } else {
+            let newValue = parseInt(cell.innerText) * 2
+            matrix[newRow][newCol].innerText = newValue.toString()
+            matrix[row][col].innerText = ""
+            movedOrMerged = true
         }
-        return true 
-    } 
-    return false
-    console.log(moved)
+    }
+
+   
+    if (!movedOrMerged) {
+        moved = false
+    } else {
+        moved = true
+    }
+
+    console.log(moved) 
+    return movedOrMerged
 }
-//}
+
 
 
 // checks if row and column are in bounds of the grid
@@ -187,7 +191,7 @@ let checkMove = (row, col) => {return row >= 0 && row < 4 && col >= 0 && col <4}
 // determines direction of the key press and moves over each cell in the clicked direction
 let keyClick = (event) => {
     let key = event.key
-    moved = false
+    //moved = false
 
     switch(key) {
         case "ArrowLeft":
@@ -198,8 +202,8 @@ let keyClick = (event) => {
                 }
             }
             newNumber(moved)
-            moved = false
-            console.log(moved)
+            //moved = false
+            console.log(moved + " left")
             break
 
         case "ArrowRight":
@@ -210,7 +214,7 @@ let keyClick = (event) => {
             }
             
             newNumber(moved)
-            moved = false
+            //moved = false
             console.log(moved + " right")
             break
 
@@ -222,7 +226,7 @@ let keyClick = (event) => {
             }
             
             newNumber(moved)
-            moved = false
+            //moved = false
             console.log(moved + " up")
             break
 
@@ -234,7 +238,7 @@ let keyClick = (event) => {
             }
             
             newNumber(moved)
-            moved = false
+            //moved = false
             console.log(moved + " down")
             break
     }
@@ -248,6 +252,8 @@ let newNumber = (moved) => {
             let emptyCell = findEmptyCell()
             if (emptyCell) {
                 emptyCell.innerText = randomNumber()
+                updateScore()
+                cellAnimation()
             } 
         }, 300)
     }
