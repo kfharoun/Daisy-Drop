@@ -20,7 +20,8 @@ body {
     flex-wrap: wrap;
     width: 40rem;
     border-radius: 10px;
-    margin-left:120px;
+    margin-left:110px;
+    margin-right: -50px;
   }
   
   .cell {
@@ -35,6 +36,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #f59670;
+    
     
     /* border-radius: 8px 0px 0px 0px; */
   }
@@ -96,6 +98,7 @@ header {
 
 .bottom {
   border-bottom: none;
+  
 
 }
 
@@ -131,13 +134,14 @@ h1 {
  font-size: 40px;
  margin-top: 30px;
  color:#F5F3F2;
- text-shadow: -2px -2px 0 #F58256, 2px -2px 0 #F58256, -2px 1px 0 #F58256, 2px 1px 0 #F58256;
+ text-shadow: -1px -1px 0 #F58256, 1px -1px 0 #F58256, -1px 1px 0 #F58256, 1px 1px 0 #F58256;
 }
 
 h3 {
   margin-bottom: 0;
   text-align: center;
   font-size: 29px;
+  justify-self: start;
 }
 
 .button {
@@ -145,15 +149,17 @@ h3 {
 }
 
 button {
-  max-height: 3rem;
-  padding: 15px 20px;
+  /* position: relative; */
+  height: 3rem;
+  /* padding: 0px 20px; */
   margin-left: 0px;
 }
 
 .restart {
   margin-top: 300px;
-  padding: 30px;
-  border-radius: 1rem;
+  padding: 10px 20px;
+  padding-bottom: 10px;
+  border-radius: 8px;
   font-family: "DynaPuff", system-ui;
     font-optical-sizing: auto;
     font-weight: 900;
@@ -163,6 +169,15 @@ button {
   color:#F5F3F2;
   background-color: #F5C9D4;
   font-size: 20px;
-  text-shadow: -2px -2px 0 #F58256, 2px -2px 0 #F58256, -2px 1px 0 #F58256, 2px 1px 0 #F58256;
+  text-shadow: -1px -1px 0 #F58256, 1px -1px 0 #F58256, -1px 1px 0 #F58256, 1px 1px 0 #F58256;
   border: none;
+}
+
+.restart:hover {
+  background-color: #efabbb;
+}
+
+.restart:active {
+  background-color: #e7bcc7;
+  box-shadow: -2px 0px 5px #d48261;
 }
