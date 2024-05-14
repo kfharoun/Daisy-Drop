@@ -50,8 +50,8 @@
 - [x] Moves are performed by shifting all tiles towards one edge – up, down, left, or right.
 - [x] Any tiles with the same value that are adjacent to each other and are moving together will merge and end up with a new tile equal to the sum of the earlier two.
 - [x] After we’ve made a move, a new tile will be placed onto the board. 
-- [] The game then continues until there are no more moves possible.
-- [] Player has won once they have reached 2048
+- [x] The game then continues until there are no more moves possible.
+- [x] Player has won once they have reached 2048
 
 
 ## Visual Elements Needed

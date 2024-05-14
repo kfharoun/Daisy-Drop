@@ -102,7 +102,10 @@ for (let i = 0; i < 2; i++){
     const emptyCell = findEmptyCell()
     if (emptyCell){
         emptyCell.innerText = 2
+        cellStyle(emptyCell.innerText, emptyCell)
     }
+
+    
     //console.log(matrix)
 }
 }
@@ -110,6 +113,7 @@ for (let i = 0; i < 2; i++){
 //if random number = 1 then it's a 4, otherwise it's a 2
 const randomNumber = () => {
     return Math.floor(Math.random() < 0.1 ? 4 : 2)
+    //cellStyle(emptyCell.innerText, emptyCell)
 }
     // console.log(randomNumber())
 
@@ -163,12 +167,19 @@ let moveMerge = (row, col, changeRow, changeCol) => {
         if (matrix[newRow][newCol].innerText === "") {
             matrix[newRow][newCol].innerText = cell.innerText;
             matrix[row][col].innerText = ""
+            resetStyle(cell)
             movedOrMerged = true
+            cellStyle(matrix[newRow][newCol].innerText, matrix[newRow][newCol])
+            
+            
         } else {
             let newValue = parseInt(cell.innerText) * 2
             matrix[newRow][newCol].innerText = newValue.toString()
             matrix[row][col].innerText = ""
+            resetStyle(cell)
             movedOrMerged = true
+            cellStyle(newValue, matrix[newRow][newCol])
+            
         }
     }
 
@@ -257,6 +268,7 @@ let newNumber = (moved) => {
             let emptyCell = findEmptyCell()
             if (emptyCell) {
                 emptyCell.innerText = randomNumber()
+                cellStyle(emptyCell.innerText, emptyCell)
                 updateScore()
                 cellAnimation()
             } 
@@ -311,6 +323,48 @@ const checkGameOver = () => {
 
 let resetGame = (event) => {
     window.location.reload()
+}
+
+const cellStyle = (cellValue, cellElement) => {
+    switch(parseInt(cellValue)){
+        case 2: 
+            cellElement.style.backgroundColor = `#FFE0E8`
+            break
+        case 4: 
+            cellElement.style.backgroundColor = `#FFD3DF`
+            break
+        case 8: 
+            cellElement.style.backgroundColor = `#FFC6D6`
+            break
+        case 16: 
+            cellElement.style.backgroundColor = `#FFB9CD`
+            break
+         case 32: 
+            cellElement.style.backgroundColor = `#FFACC4`
+            break
+        case 64: 
+            cellElement.style.backgroundColor = `#FF9FB9`
+            break
+        case 128: 
+            cellElement.style.backgroundColor = `#FF92B0`
+            break
+         case 256: 
+            cellElement.style.backgroundColor = `#FF85A7`
+            break
+        case 412: 
+            cellElement.style.backgroundColor = `#FF789E`
+            break
+        case 1024: 
+            cellElement.style.backgroundColor = `#FF6B95`
+            break
+        case 2048: 
+            cellElement.style.backgroundColor = `#F58256`
+            break
+}
+}
+
+let resetStyle = (cell) => {
+    cell.style.backgroundColor=``
 }
 /*-------------------------------- Event Listeners --------------------------------*/
 
