@@ -160,25 +160,26 @@ let moveMerge = (row, col, changeRow, changeCol) => {
     while (checkMove(newRow + changeRow, newCol + changeCol) && (matrix[newRow + changeRow][newCol + changeCol]?.innerText === "" || matrix[newRow + changeRow][newCol + changeCol]?.innerText === cell.innerText)) {
         newRow += changeRow
         newCol += changeCol
-        movedOrMerged = true
+        //movedOrMerged = false
     }
 
     if (newRow !== row || newCol !== col) {
         if (matrix[newRow][newCol].innerText === "") {
             matrix[newRow][newCol].innerText = cell.innerText;
             matrix[row][col].innerText = ""
-            resetStyle(cell)
+            
             movedOrMerged = true
             cellStyle(matrix[newRow][newCol].innerText, matrix[newRow][newCol])
-            
+            resetStyle(cell)
             
         } else {
             let newValue = parseInt(cell.innerText) * 2
             matrix[newRow][newCol].innerText = newValue.toString()
             matrix[row][col].innerText = ""
-            resetStyle(cell)
+            
             movedOrMerged = true
             cellStyle(newValue, matrix[newRow][newCol])
+            resetStyle(cell)
             
         }
     }

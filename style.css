@@ -1,33 +1,122 @@
 body {
     background-color: #F5F3F2;
-    /* Use a system font, if none are available use an available sans-sarif */
-    font-family: system-ui, sans-serif;
     margin: 0;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    height: 100vh;
+    font-family: "DynaPuff", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+    
   }
   
   .game {
     display: flex;
     flex-wrap: wrap;
-    width: 425px;
+    width: 50rem;
     border-radius: 10px;
   }
   
   .cell {
     width: 20%;
     aspect-ratio: 1/1; 
-    border: 2px solid #d88564;
-    font-size: 30px;
+    border: 1px solid #d88564;
+    color:#F5F3F2;
+    text-shadow: -2px -2px 0 #F58256, 2px -2px 0 #F58256, -2px 2px 0 #F58256, 2px 2px 0 #F58256;
+    font-size: 60px;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #F59570;
+    
     /* border-radius: 8px 0px 0px 0px; */
   }
 
- 
+.zero {
+  border-top-left-radius: 1.875rem;
+  border-top: none;
+  border-left: none;
+  /* border: none; */
+}
+
+.three {
+  border-top-right-radius: 1.875rem;
+  border-top: none;
+  border-right: none;
+}
+
+.fifteen {
+  border-bottom-right-radius: 1.875rem;
+  border-right: none;
+  border-bottom: none;
+
+}
+
+.twelve {
+  border-bottom-left-radius: 1.875rem;
+  border-left: none;
+  border-bottom: none;
+
+}
+
+.scores {
+  display: flex;
+  flex-direction: column;
+}
+
+.toWin { 
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 5rem;
+  margin-left: 0px;
+  margin-right: 200px;
+}
+
+.top {
+  border-top: none;
+
+}
+
+.bottom {
+  border-bottom: none;
+
+}
+
+.left {
+  border-left: none;
+
+}
+
+.right {
+  border-right: none;
+
+}
+
+h1 {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  max-width: 160px;
+  background-color: #F58256;
+  padding: 20px 0px 30px 0px;
+  text-align: center;
+  border-radius: 2rem;
+  font-size: 48px;
+  color: #F5F3F2;
+  letter-spacing: 3px;
+  -webkit-text-stroke-color: #000000;
 
