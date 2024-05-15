@@ -73,6 +73,8 @@ let numRow = null
 let numCol = null
 let moved = false
 let button = document.querySelector(`#reset`)
+let win = document.querySelector(`.winner`)
+let lost = document.querySelector(`.gameOver`)
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -160,40 +162,31 @@ let moveMerge = (row, col, changeRow, changeCol) => {
     while (checkMove(newRow + changeRow, newCol + changeCol) && (matrix[newRow + changeRow][newCol + changeCol]?.innerText === "" || matrix[newRow + changeRow][newCol + changeCol]?.innerText === cell.innerText)) {
         newRow += changeRow
         newCol += changeCol
-        //movedOrMerged = false
     }
 
     if (newRow !== row || newCol !== col) {
         if (matrix[newRow][newCol].innerText === "") {
             matrix[newRow][newCol].innerText = cell.innerText;
             matrix[row][col].innerText = ""
-            
+
             movedOrMerged = true
             cellStyle(matrix[newRow][newCol].innerText, matrix[newRow][newCol])
             resetStyle(cell)
-            
-        } else {
+        } else if (matrix[newRow][newCol].innerText === cell.innerText) {
             let newValue = parseInt(cell.innerText) * 2
-            matrix[newRow][newCol].innerText = newValue.toString()
+            matrix[newRow][newCol].innerText = newValue.toString();
             matrix[row][col].innerText = ""
-            
+
             movedOrMerged = true
             cellStyle(newValue, matrix[newRow][newCol])
             resetStyle(cell)
-            
         }
     }
-
-   
-    if (!movedOrMerged) {
-        moved = false
-    } else {
-        moved = true
-    }
-
-    console.log(moved) 
+    
     return movedOrMerged
-}
+};
+
+
 
 
 
@@ -204,76 +197,98 @@ let checkMove = (row, col) => {return row >= 0 && row < 4 && col >= 0 && col <4}
 // determines direction of the key press and moves over each cell in the clicked direction
 let keyClick = (event) => {
     let key = event.key
-    //moved = false
+    let filledCells = findFilledCells()
+    moved = false
 
-    switch(key) {
+    switch (key) {
         case "ArrowLeft":
+            moved = false
             for (let col = 1; col < 4; col++) {
-                for (let row = 0; row < 4; row++){
-                    // console.log(row)
-                   moved = moveMerge(row, col, 0, -1)
+                for (let row = 0; row < 4; row++) {
+                    //let cellIndex = row * 4 + col
+                    if (filledCells.some(cell => cell.row === row && cell.col === col)) {
+                        moved = moveMerge(row, col, 0, -1) || moved
+                    }
                 }
             }
             if (!checkWin() && !checkGameOver()) {
-                newNumber(moved)}
-            //moved = false
-            console.log(moved + " left")
-            break
+                newNumber(moved)
+            }
+            break;
 
         case "ArrowRight":
+            moved = false
             for (let col = 2; col >= 0; col--) {
                 for (let row = 0; row < 4; row++) {
-                    moved = moveMerge(row, col, 0, 1) 
+                    //let cellIndex = row * 4 + col
+                    if (filledCells.some(cell => cell.row === row && cell.col === col)) {
+                        moved = moveMerge(row, col, 0, 1) || moved
+                    }
                 }
             }
-            
             if (!checkWin() && !checkGameOver()) {
-                newNumber(moved)}
-            //moved = false
-            console.log(moved + " right")
-            break
+                newNumber(moved)
+            }
+            break;
 
         case "ArrowUp":
+            moved = false;
             for (let row = 1; row < 4; row++) {
                 for (let col = 0; col < 4; col++) {
-                    moved = moveMerge(row, col, -1, 0) 
+                    //let cellIndex = row * 4 + col
+                    if (filledCells.some(cell => cell.row === row && cell.col === col)) {
+                        moved = moveMerge(row, col, -1, 0) || moved
+                    }
                 }
             }
-            
             if (!checkWin() && !checkGameOver()) {
-                newNumber(moved)}
-            //moved = false
-            console.log(moved + " up")
-            break
+                newNumber(moved)
+            }
+            break;
 
         case "ArrowDown":
+            moved = false;
             for (let row = 2; row >= 0; row--) {
-                for (let col = 0; col < 4; col++){
-                    moved = moveMerge(row, col, 1, 0) 
+                for (let col = 0; col < 4; col++) {
+                    //let cellIndex = row * 4 + col
+                    if (filledCells.some(cell => cell.row === row && cell.col === col)) {
+                        moved = moveMerge(row, col, 1, 0) || moved
+                    }
                 }
             }
-            
             if (!checkWin() && !checkGameOver()) {
-                newNumber(moved)}
-            //moved = false
-            console.log(moved + " down")
+                newNumber(moved)
+            }
             break
     }
+}
 
-   
+let findFilledCells = () => {
+    let filledCells = []
+    for (let i = 0; i < cells.length; i++){
+        if (cells[i].innerText !== ""){
+            filledCells.push({
+                row: Math.floor(i/4),
+                col: i % 4
+            })
+        }
+    }
+    return filledCells
 }
 
 let newNumber = (moved) => {
     if (moved) {
         setTimeout(() => {
-            let emptyCell = findEmptyCell()
+            let filledCells = findFilledCells();
+            let emptyCell = findEmptyCell();
             if (emptyCell) {
-                emptyCell.innerText = randomNumber()
-                cellStyle(emptyCell.innerText, emptyCell)
-                updateScore()
-                cellAnimation()
-            } 
-        }, 300)
+                let randomNum = randomNumber();
+                emptyCell.innerText = randomNum;
+                cellStyle(randomNum, emptyCell);
+                updateScore();
+                cellAnimation();
+            }
+        }, 300);
     }
 }
 
