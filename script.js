@@ -73,7 +73,6 @@ let numRow = null
 let numCol = null
 let moved = false
 let button = document.querySelector(`#reset`)
-let win = document.querySelector(`.winner`)
 let lost = document.querySelector(`.gameOver`)
 
 
@@ -213,6 +212,10 @@ let keyClick = (event) => {
             }
             if (!checkWin() && !checkGameOver()) {
                 newNumber(moved)
+            }else if (checkwin()){
+                winMessage()
+            } else if (checkGameOver()){
+                loseMessage()
             }
             break;
 
@@ -228,6 +231,10 @@ let keyClick = (event) => {
             }
             if (!checkWin() && !checkGameOver()) {
                 newNumber(moved)
+            }else if (checkwin()){
+                winMessage()
+            } else if (checkGameOver()){
+                loseMessage()
             }
             break;
 
@@ -243,6 +250,10 @@ let keyClick = (event) => {
             }
             if (!checkWin() && !checkGameOver()) {
                 newNumber(moved)
+            }else if(checkwin()){
+                winMessage()
+            } else if (checkGameOver()){
+                loseMessage()
             }
             break;
 
@@ -258,6 +269,10 @@ let keyClick = (event) => {
             }
             if (!checkWin() && !checkGameOver()) {
                 newNumber(moved)
+            }else if (checkWin()){
+                winMessage()
+            }else if (checkGameOver()){
+                loseMessage()
             }
             break
     }
@@ -288,7 +303,7 @@ let newNumber = (moved) => {
                 updateScore();
                 cellAnimation();
             }
-        }, 300);
+        }, 100);
     }
 }
 
@@ -304,21 +319,23 @@ let updateScore = () => {
         }
     }
     scoreElement.textContent = maxScoreVal.toString()
+    return maxScoreVal
 }
 
 const checkWin = () => {
-        for (let row = 0; row < 4; row++) {
-            for (let col = 0; col < 4; col++) {
-                if (matrix[row][col].innerText === "2048") {
-                    //player won appears here
-                    return true
-                }
-            }
-        }
-        return false
+      let bestScore = updateScore()
+      return bestScore == 2048
     }
 
+const winMessage = () => {
+    const win = document.querySelector(`.win`)
+    const restart = document.querySelector(`.restart`)
+    win.style.display = `block`
+    restart.style.visibility = `hidden`
+}
+
 const checkGameOver = () => {
+    let scoreElement = updateScore()
     if (!findEmptyCell()) {
         for (let row = 0; row < 4; row++) {
             for (let col = 0; col < 4; col++) {
@@ -336,6 +353,14 @@ const checkGameOver = () => {
     return false
 }
 
+const loseMessage = () => {
+    let checkGameOver = checkGameOver()
+    const lost = document.querySelector(`.lost`)
+    if (checkGameOver){
+        lost.style.display = `block`
+        restart.style.visibility = `hidden`
+    }
+}
 
 let resetGame = (event) => {
     window.location.reload()
@@ -347,34 +372,34 @@ const cellStyle = (cellValue, cellElement) => {
             cellElement.style.backgroundColor = `#FFE0E8`
             break
         case 4: 
-            cellElement.style.backgroundColor = `#FFD3DF`
+            cellElement.style.backgroundColor = `#ffd6df`
             break
         case 8: 
-            cellElement.style.backgroundColor = `#FFC6D6`
+            cellElement.style.backgroundColor = `#ffcbd4`
             break
         case 16: 
-            cellElement.style.backgroundColor = `#FFB9CD`
+            cellElement.style.backgroundColor = `#ffc1c8`
             break
          case 32: 
-            cellElement.style.backgroundColor = `#FFACC4`
+            cellElement.style.backgroundColor = `#ffb7ba`
             break
         case 64: 
-            cellElement.style.backgroundColor = `#FF9FB9`
+            cellElement.style.backgroundColor = `#ffadac`
             break
         case 128: 
-            cellElement.style.backgroundColor = `#FF92B0`
+            cellElement.style.backgroundColor = `#ffa39c`
             break
          case 256: 
-            cellElement.style.backgroundColor = `#FF85A7`
+            cellElement.style.backgroundColor = `#ff9a8c`
             break
-        case 412: 
-            cellElement.style.backgroundColor = `#FF789E`
+        case 512: 
+            cellElement.style.backgroundColor = `#ff927b`
             break
         case 1024: 
-            cellElement.style.backgroundColor = `#FF6B95`
+            cellElement.style.backgroundColor = `#fb8a69`
             break
         case 2048: 
-            cellElement.style.backgroundColor = `#F58256`
+            cellElement.style.backgroundColor = `#f58356`
             break
 }
 }

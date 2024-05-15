@@ -183,7 +183,7 @@ button {
 }
 
 .win {
-  position: fixed; 
+  position: absolute; 
   top: 60%; 
   left: 46%; 
   transform: translate(-50%, -50%); 
@@ -193,7 +193,25 @@ button {
   text-align: center; 
   z-index: 100; 
   color:#F58256;
-   display: none; /*Initially hide it */
+   display: none; 
+   /* hide it */
+}
+
+.lost {
+  position: absolute; 
+  top: 61%; 
+  left: 45%; 
+  width: 400px;
+  height: 250px;
+  transform: translate(-50%, -50%); 
+  background-color:#f5f3f2ec; 
+  padding: 40px 0px; 
+  border-radius: 10px; 
+  text-align: center; 
+  z-index: 100; 
+  color:#F58256;
+   display: none; 
+
 }
 
 h4 {
@@ -203,8 +221,12 @@ h4 {
   padding-bottom: 40px;
   padding-top: 30px;
 }
-
-.win-restart {
+.winmssg {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  margin: 5px;
+}
+.win-restart, .lostbutton {
   font-family: "DynaPuff", system-ui;
     font-optical-sizing: auto;
     font-weight: 900;
@@ -218,19 +240,22 @@ h4 {
       border: none;
       border-radius: 8px;
       padding-top: 0px;
-  margin-bottom: 40px;
+    margin-bottom: 40px;
 }
-
-.win-restart:hover {
+.lostbutton {
+  margin-bottom: 0px;
+}
+.win-restart:hover, .lostbutton:hover {
   background-color: #efabbb;
 }
 
-.win-restart:active {
+.win-restart:active, .lostbutton:hover {
   background-color: #e7bcc7;
   box-shadow: 0px 2px 5px #d48261;
 }
 
 
-/* .win.show {
+.win.show {
   display: block; 
-} */
+}
+
