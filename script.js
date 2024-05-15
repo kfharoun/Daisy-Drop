@@ -354,9 +354,11 @@ const checkGameOver = () => {
 }
 
 const loseMessage = () => {
-    let checkGameOver = checkGameOver()
+    let gameOver = checkGameOver()
     const lost = document.querySelector(`.lost`)
-    if (checkGameOver){
+    const restart = document.querySelector(`.restart`)
+    
+    if (gameOver){
         lost.style.display = `block`
         restart.style.visibility = `hidden`
     }
