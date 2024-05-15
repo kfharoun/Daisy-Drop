@@ -125,3 +125,4 @@
 * [2048 code i looked at for an example 2](https://medium.com/@aswingiftson007/2048-game-in-html-and-javascript-c6cc63d2698f)
 *[2048 code i looked at for an example 3](https://codepen.io/fabi_yo_/pen/zNrmwZ)
 * [display properties for win and lose functions](https://www.w3schools.com/jsref/prop_style_display.asp)
+* [text animation and colors](https://fossheim.io/writing/posts/css-text-gradient/)

@@ -74,6 +74,7 @@ let numCol = null
 let moved = false
 let button = document.querySelector(`#reset`)
 let lost = document.querySelector(`.gameOver`)
+let rainbow = document.querySelector(`.rainbow1`)
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -324,7 +325,7 @@ let updateScore = () => {
 
 const checkWin = () => {
       let bestScore = updateScore()
-      return bestScore == 2048
+      return bestScore == 4
     }
 
 const winMessage = () => {
@@ -416,7 +417,7 @@ document.addEventListener(`DOMContentLoaded`, function(){
 })
 
 document.addEventListener(`click`, function(event) {
-    if (event.target.id === `reset`){
+    if (event.target.id === `reset` || event.target.classList.contains(`rainbow1`)){
         resetGame()
     }
 })
