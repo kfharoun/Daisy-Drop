@@ -166,11 +166,11 @@ button {
     font-style: normal;
     font-variation-settings:
       "wdth" 100;
-  color:#F5F3F2;
-  background-color: #F5C9D4;
-  font-size: 20px;
-  text-shadow: -1px -1px 0 #F58256, 1px -1px 0 #F58256, -1px 1px 0 #F58256, 1px 1px 0 #F58256;
-  border: none;
+      color:#F5F3F2;
+      background-color: #F5C9D4;
+      font-size: 20px;
+      text-shadow: -1px -1px 0 #F58256, 1px -1px 0 #F58256, -1px 1px 0 #F58256, 1px 1px 0 #F58256;
+      border: none;
 }
 
 .restart:hover {
@@ -179,5 +179,58 @@ button {
 
 .restart:active {
   background-color: #e7bcc7;
-  box-shadow: -2px 0px 5px #d48261;
+  box-shadow: 0px 2px 5px #d48261;
 }
+
+.win {
+  position: fixed; 
+  top: 60%; 
+  left: 46%; 
+  transform: translate(-50%, -50%); 
+  background-color:#f5f3f2ec; 
+  padding: 50px; 
+  border-radius: 10px; 
+  text-align: center; 
+  z-index: 100; 
+  color:#F58256;
+   display: none; /*Initially hide it */
+}
+
+h4 {
+  font-size: 46px;
+  padding: 0;
+  margin: 0;
+  padding-bottom: 40px;
+  padding-top: 30px;
+}
+
+.win-restart {
+  font-family: "DynaPuff", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+      color:#F5F3F2;
+      background-color: #F5C9D4;
+      font-size: 20px;
+      text-shadow: -1px -1px 0 #F58256, 1px -1px 0 #F58256, -1px 1px 0 #F58256, 1px 1px 0 #F58256;
+      border: none;
+      border-radius: 8px;
+      padding-top: 0px;
+  margin-bottom: 40px;
+}
+
+.win-restart:hover {
+  background-color: #efabbb;
+}
+
+.win-restart:active {
+  background-color: #e7bcc7;
+  box-shadow: 0px 2px 5px #d48261;
+}
+
+
+/* .win.show {
+  display: block; 
+} */
