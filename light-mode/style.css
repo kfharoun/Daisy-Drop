@@ -87,7 +87,7 @@ header {
   flex-direction: row;
   justify-content: space-between;
   gap: 7rem 4rem;
-  margin-left: 0px;
+  margin-left: 40px;
   margin-right: 150px;
 }
 

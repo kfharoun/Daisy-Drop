@@ -213,7 +213,7 @@ let keyClick = (event) => {
             }
             if (!checkWin() && !checkGameOver()) {
                 newNumber(moved)
-            }else if (checkwin()){
+            }else if (checkWin()){
                 winMessage()
             } else if (checkGameOver()){
                 loseMessage()
@@ -232,7 +232,7 @@ let keyClick = (event) => {
             }
             if (!checkWin() && !checkGameOver()) {
                 newNumber(moved)
-            }else if (checkwin()){
+            }else if (checkWin()){
                 winMessage()
             } else if (checkGameOver()){
                 loseMessage()
@@ -251,7 +251,7 @@ let keyClick = (event) => {
             }
             if (!checkWin() && !checkGameOver()) {
                 newNumber(moved)
-            }else if(checkwin()){
+            }else if(checkWin()){
                 winMessage()
             } else if (checkGameOver()){
                 loseMessage()
@@ -325,7 +325,7 @@ let updateScore = () => {
 
 const checkWin = () => {
       let bestScore = updateScore()
-      return bestScore == 4
+      return bestScore == 2048
     }
 
 const winMessage = () => {
