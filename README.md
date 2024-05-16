@@ -83,6 +83,12 @@
 
 * **thursday** -> finish any problems, attempt dark mode
 
+### Goals After Submission 
+* edit java to allow for numbers to be images 
+* add background
+* edit mobile sizing
+* add dark mode
+
 
 ### Sources
 
