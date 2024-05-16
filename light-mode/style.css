@@ -127,14 +127,14 @@ h1 {
 }
 
 .score, .win-amount {
- background-color: #F5C9D4;
+ background-color:#FFE0E8;
  text-align: center;
- padding: 20px 30px;
+ padding: 20px 25px;
+ padding-bottom: 10px;
  border-radius: 10rem;
  font-size: 40px;
- margin-top: 30px;
+ margin-top: 20px;
  color:#F5F3F2;
- text-shadow: -1px -1px 0 #F58256, 1px -1px 0 #F58256, -1px 1px 0 #F58256, 1px 1px 0 #F58256;
 }
 
 h3 {
@@ -257,6 +257,13 @@ h4 {
 
 .win.show {
   display: block; 
+}
+
+.cell-value-2 {
+  /* define styles for cells with value 2 */
+  background-color: #FFE0E8; 
+  background-image: url("/light-mode/image-elements/2.png");
+  background-size: cover;
 }
 
 .rainbow1 {

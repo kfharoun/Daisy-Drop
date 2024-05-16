@@ -64,6 +64,21 @@
 const cells = document.querySelectorAll(".cell")
 // console.log(cells[2])
 const matrix = []
+const numberToImage = {
+    "2": "image elements/2.png",
+    "4": "path/to/4.png",
+    "8": "path/to/8.png",
+    "16": "path/to/16.png",
+    "32": "path/to/32.png",
+    "64": "path/to/64.png",
+    "128": "path/to/128.png",
+    "256": "path/to/256.png",
+    "512": "path/to/512.png",
+    "1024": "path/to/1024.png",
+    "2048": "path/to/2048.png"
+};
+
+
 /*-------------------------------- variables --------------------------------*/
 
 let scoreElement = document.querySelector(`.score`)
@@ -107,9 +122,9 @@ for (let i = 0; i < 2; i++){
         cellStyle(emptyCell.innerText, emptyCell)
     }
 
-    
     //console.log(matrix)
 }
+
 }
 
 //if random number = 1 then it's a 4, otherwise it's a 2
@@ -295,16 +310,18 @@ let findFilledCells = () => {
 let newNumber = (moved) => {
     if (moved) {
         setTimeout(() => {
-            let filledCells = findFilledCells();
-            let emptyCell = findEmptyCell();
+            let filledCells = findFilledCells()
+            let emptyCell = findEmptyCell()
             if (emptyCell) {
-                let randomNum = randomNumber();
-                emptyCell.innerText = randomNum;
-                cellStyle(randomNum, emptyCell);
-                updateScore();
-                cellAnimation();
+                let randomNum = randomNumber()
+                emptyCell.innerText = randomNum
+                cellStyle(randomNum, emptyCell)
+                updateScore()
+                cellAnimation()
+                
             }
-        }, 100);
+        }, 100)
+        changeNumbersToImages()
     }
 }
 
@@ -369,6 +386,9 @@ let resetGame = (event) => {
     window.location.reload()
 }
 
+
+
+
 const cellStyle = (cellValue, cellElement) => {
     switch(parseInt(cellValue)){
         case 2: 
@@ -406,6 +426,7 @@ const cellStyle = (cellValue, cellElement) => {
             break
 }
 }
+
 
 let resetStyle = (cell) => {
     cell.style.backgroundColor=``
