@@ -1,4 +1,7 @@
 # Daisy Drop !
+
+[click me to play!](https://daisydrop.surge.sh/)
+
 ## Wireframe
 **Light Mode**
 ![wireframelight](https://i.imgur.com/RgwjKOH.png)
