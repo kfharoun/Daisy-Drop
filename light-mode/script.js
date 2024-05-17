@@ -335,7 +335,7 @@ let updateScore = () => {
 //checks .score for winning number
 const checkWin = () => {
       let bestScore = updateScore()
-      return bestScore == 8
+      return bestScore == 2048
     }
 
 //pulls up winning message if winning number reached 
