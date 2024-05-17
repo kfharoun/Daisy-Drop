@@ -129,7 +129,7 @@
         cell.style.left = `${newCol * cellSize}px`;
         cell.style.top = `${newRow * cellSize}px`;
     }
-```
+    ```
 
 * [2048 code i looked at for an example 1](https://www.geeksforgeeks.org/design-a-2048-game-in-javascript/)
 * [2048 code i looked at for an example 2](https://medium.com/@aswingiftson007/2048-game-in-html-and-javascript-c6cc63d2698f)

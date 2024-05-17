@@ -76,7 +76,7 @@ const numberToImage = {
     "512": "path/to/512.png",
     "1024": "path/to/1024.png",
     "2048": "path/to/2048.png"
-};
+}
 
 
 /*-------------------------------- variables --------------------------------*/
@@ -189,7 +189,7 @@ let moveMerge = (row, col, changeRow, changeCol) => {
             resetStyle(cell)
         } else if (matrix[newRow][newCol].innerText === cell.innerText) {
             let newValue = parseInt(cell.innerText) * 2
-            matrix[newRow][newCol].innerText = newValue.toString();
+            matrix[newRow][newCol].innerText = newValue.toString()
             matrix[row][col].innerText = ""
 
             movedOrMerged = true
@@ -199,7 +199,7 @@ let moveMerge = (row, col, changeRow, changeCol) => {
     }
     
     return movedOrMerged
-};
+}
 
 
 
