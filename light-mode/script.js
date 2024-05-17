@@ -133,8 +133,6 @@ const randomNumber = () => {
     //cellStyle(emptyCell.innerText, emptyCell)
 }
  
-
-
 const findEmptyCell = () => {
     const shuffleArray = (array) => {
         for (let i = array.length - 1; i > 0; i--) {
@@ -150,10 +148,6 @@ const findEmptyCell = () => {
     }
 }
 }
-
-
-
-
 
 let cellAnimation = (cell, newRow, newCol) => {
     const cellSize = 71;
@@ -200,10 +194,6 @@ let moveMerge = (row, col, changeRow, changeCol) => {
     
     return movedOrMerged
 }
-
-
-
-
 
 // checks if row and column are in bounds of the grid
 let checkMove = (row, col) => {return row >= 0 && row < 4 && col >= 0 && col <4}
@@ -294,6 +284,7 @@ let keyClick = (event) => {
     }
 }
 
+//finds cells that have a number in them
 let findFilledCells = () => {
     let filledCells = []
     for (let i = 0; i < cells.length; i++){
@@ -307,6 +298,7 @@ let findFilledCells = () => {
     return filledCells
 }
 
+//adds the new number in to the board 
 let newNumber = (moved) => {
     if (moved) {
         setTimeout(() => {
@@ -325,7 +317,7 @@ let newNumber = (moved) => {
     }
 }
 
-
+//pulls the highest number from the board
 let updateScore = () => {
     let maxScoreVal = -Infinity
     for (let row = 0; row < 4; row++) {
@@ -340,11 +332,13 @@ let updateScore = () => {
     return maxScoreVal
 }
 
+//checks .score for winning number
 const checkWin = () => {
       let bestScore = updateScore()
-      return bestScore == 2048
+      return bestScore == 8
     }
 
+//pulls up winning message if winning number reached 
 const winMessage = () => {
     const win = document.querySelector(`.win`)
     const restart = document.querySelector(`.restart`)
@@ -352,6 +346,7 @@ const winMessage = () => {
     restart.style.visibility = `hidden`
 }
 
+//checks for moves that can or cannot be made
 const checkGameOver = () => {
     let scoreElement = updateScore()
     if (!findEmptyCell()) {
@@ -371,6 +366,7 @@ const checkGameOver = () => {
     return false
 }
 
+//lose message appears if checkgameover function returns true
 const loseMessage = () => {
     let gameOver = checkGameOver()
     const lost = document.querySelector(`.lost`)
@@ -382,13 +378,12 @@ const loseMessage = () => {
     }
 }
 
+//reset buttons
 let resetGame = (event) => {
     window.location.reload()
 }
 
-
-
-
+//style of cells that appear
 const cellStyle = (cellValue, cellElement) => {
     switch(parseInt(cellValue)){
         case 2: 
@@ -427,7 +422,7 @@ const cellStyle = (cellValue, cellElement) => {
 }
 }
 
-
+//resets style when pieces are moved 
 let resetStyle = (cell) => {
     cell.style.backgroundColor=``
 }
