@@ -122,7 +122,7 @@ for (let i = 0; i < 2; i++){
         cellStyle(emptyCell.innerText, emptyCell)
     }
 
-    //console.log(matrix)
+    
 }
 
 }
@@ -132,7 +132,7 @@ const randomNumber = () => {
     return Math.floor(Math.random() < 0.1 ? 4 : 2)
     //cellStyle(emptyCell.innerText, emptyCell)
 }
-    // console.log(randomNumber())
+ 
 
 
 const findEmptyCell = () => {
@@ -153,7 +153,7 @@ const findEmptyCell = () => {
 
 
 
-// console.log(`here! ${emptyCell.id}`)
+
 
 let cellAnimation = (cell, newRow, newCol) => {
     const cellSize = 71;
